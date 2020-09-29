@@ -20,9 +20,6 @@ closeBtn.addEventListener('click', function(){
     overlay.classList.remove('active');
 });
 
-createBtn.addEventListener('click', function(e){
-    e.preventDefault();
-});
 
 
 
@@ -110,33 +107,51 @@ createBtn.addEventListener('click', function(e){
     e.preventDefault();
     let eventName = $('#event-name');
     let totalRounds = $('#rounds');
-    let problemStatementOne = $('#problem-1'); 
-    let problemStatementTwo = $('#problem-2'); 
-    // let problemStatementThree = document.querySelector('#problem-3');
-    let maxScoreOne = $('#max-score-1'); 
-    let maxScoreTwo = $('#max-score-2');
-    let metricOne = $('#metric-1');
-    let metricTwo = $('#metric-2');
+
+    let metricz = []
+    let metBool = false
+    let metNum = 1
+
+    while(!metBool) {
+        if(document.querySelector(`#metric-${metNum}`)) {
+            console.log($(`#metric-${metNum}`))
+            metricz.push({
+                metricName: $(`#metric-${metNum}`).val(),
+                maxScore: $(`#max-score-${metNum}`).val()
+            })
+            metNum += 1
+        }else {
+            metBool = true
+        }
+    }
+
+
+    
+    let problemStatements = []
+    let plBool = false
+    let plNum = 1
+
+    while(!plBool) {
+        if(document.querySelector(`#problem-${plNum}`)) {
+            problemStatements.push($(`#problem-${plNum}`).val())
+            plNum += 1
+        }else {
+            plBool = true
+        }
+    }
     
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", sessionStorage.getItem("admin-token"));
 
     let data = {
-        name: eventName.value,
-        metric: [
-            {
-                metricName: metricOne.val(),
-                maxScore: maxScoreOne.val()
-            },
-            {
-                metricName: metricTwo.val(),
-                maxScore: maxScoreTwo.val()
-            }
-        ],
+        name: eventName.val(),
+        metric: metricz,
         rounds: totalRounds.val(),
-        problemStatements: [problemStatementOne.val(), problemStatementTwo.val()]
+        problemStatements: problemStatements
     };
+
+    console.log(data)
 
     let raw = JSON.stringify(data);
 
@@ -144,13 +159,13 @@ createBtn.addEventListener('click', function(e){
         method: 'POST',
         headers: myHeaders,
         body: raw,
-        redirect: 'follow',
-        mode: 'no-cors'
       };
 
       fetch("https://hackjudge.herokuapp.com/events", requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
+      .then(response => response.json())
+      .then(result => {
+          console.log(result)
+      })
       .catch(error => console.log('error', error));
 
 });

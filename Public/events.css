@@ -78,8 +78,7 @@ br{
     color: #8C61FF;
     margin: 0;
     font-weight: 600;
-    padding-left: 30px;
-    /* padding-top: 10px; */
+
 }
 
 .events > .event-1 > h1 > span{
@@ -87,35 +86,54 @@ br{
     color: #000;
     padding-left: 10px;
 }
-.events > .event-1 > .teams{
-    height: fit-content;
+.events > .event-1 .teams{
+    height: 40px;
     border: 1px solid #8C61FF;
     border-radius: 5px;
-    width: 250px;
-    margin-left: 30px;
-    display: inline-block;
-    padding-left: 20px;
-    margin-top: 20px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.events > .event-1 > .reviews > p, .events > .event-1 > .teams > p{
+.event-detail-holder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+@media(max-width:576px) {
+    .event-detail-holder {
+    flex-direction: column;
+    justify-content: flex-start;
+    }
+}
+
+.event-detail-child {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.events > .event-1  .reviews > p, .events > .event-1  .teams > p{
     margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
-.events > .event-1 > .reviews{
-    height: fit-content;
+.events > .event-1  .reviews{
+    height: 40px;
     border: 1px solid #8C61FF;
     border-radius: 5px;
-    width: 150px;
-    margin-left: 30px;
-    display: inline-block;
-    padding-left: 10px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
 }
 
-.view {
-    display: inline-block;
-    float: right;
-}
 
 .view a button{
     border: none;
@@ -268,6 +286,7 @@ form input:hover, form input:focus{
     cursor: pointer;
 }
 
+
 .nice-number input{
     padding: 5px;
 }
@@ -280,9 +299,19 @@ form input:hover, form input:focus{
     background-color: rgb(116, 66, 252);
 }
 
+.nice-number>* {
+    width: 35px !important;
+    height: 35px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px !important;
+}
+
 .button-create{
     width: 100%;
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .add-statements{
@@ -293,7 +322,7 @@ form input:hover, form input:focus{
     justify-content: center;
     position: absolute;
     bottom: 10px;
-    right: 60px;
+    right: 40px;
     text-align: center;
     height: 25px !important;
     width: 25px;
@@ -316,7 +345,7 @@ form input:hover, form input:focus{
     align-items: center;
     justify-content: center;
     position: absolute;
-    right: 20px;
+    right: 10px;
     bottom: 10px;
     height: 25px;
     width: 25px;
@@ -349,7 +378,7 @@ form input:hover, form input:focus{
     justify-content: center;
     position: absolute;
     bottom: 10px;
-    right: 60px;
+    right: 40px;
     text-align: center;
     height: 25px !important;
     width: 25px;
@@ -364,7 +393,7 @@ form input:hover, form input:focus{
     align-items: center;
     justify-content: center;
     position: absolute;
-    right: 20px;
+    right: 10px;
     bottom: 10px;
     height: 25px;
     width: 25px;

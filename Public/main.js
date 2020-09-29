@@ -173,7 +173,9 @@ $(document).ready(function(){
         let password = $('#password');
         let form = $(".login-form"); 
 
-        if (isemail)
+        console.log(mail)
+
+        if (true)
         {
             var myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
@@ -203,7 +205,7 @@ $(document).ready(function(){
                     message.text('');
                     swal("Success", "You're all set!", "success");
                     setTimeout(function(){
-                        location.href = "./files/user.html"
+                        location.href = "./files/events.html"
                     }, 2500)
                 }
             })
@@ -246,7 +248,7 @@ $(document).ready(function(){
                 swal("Success", "You're all set!", "success");
                 // console.log(result["token"]);
                 setTimeout(function(){
-                    location.href = "./files/user.html"
+                    location.href = "./files/events.html"
                 }, 2500)
                 sessionStorage.setItem("token", result["token"]);
             })
