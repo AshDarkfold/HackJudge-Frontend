@@ -64,7 +64,7 @@ br{
     flex-direction: column;
 }
 
-.events > .event-1{
+.events  .event-1{
     margin-top: 60px;
     height: fit-content;
     width: 90vw;
@@ -74,19 +74,19 @@ br{
     border-radius: 5px;
 }
 
-.events > .event-1 > h1{
+.events  .event-1 > h1{
     color: #8C61FF;
     margin: 0;
     font-weight: 600;
 
 }
 
-.events > .event-1 > h1 > span{
+.events .event-1 > h1 > span{
     font-size: 16px;
     color: #000;
     padding-left: 10px;
 }
-.events > .event-1 .teams{
+.events .event-1 .teams{
     height: 40px;
     border: 1px solid #8C61FF;
     border-radius: 5px;
@@ -116,14 +116,14 @@ br{
 }
 
 
-.events > .event-1  .reviews > p, .events > .event-1  .teams > p{
+.events  .event-1  .reviews > p, .events .event-1  .teams > p{
     margin: 0;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
 
-.events > .event-1  .reviews{
+.events .event-1  .reviews{
     height: 40px;
     border: 1px solid #8C61FF;
     border-radius: 5px;
@@ -135,7 +135,7 @@ br{
 }
 
 
-.view a button{
+.view button{
     border: none;
     border-radius: 5px;
     color: #FFF;
@@ -144,6 +144,8 @@ br{
     background-color: #8C61FF;
     padding: 10px 20px;
     margin-top: 20px;
+    cursor: pointer;
+    outline: 0 !important;
 }
 
 .number{
@@ -165,6 +167,7 @@ br{
     color: rgba(140, 97, 255, 0.5);
     font-size: 30px;
     font-weight: 600;   
+    margin-bottom: 50px;
 }
 
 /* .add > i{
@@ -295,7 +298,7 @@ form input:hover, form input:focus{
     display: inline-block;
 }
 
-.nice-number button:hover, .create:hover, .view a button:hover{
+.nice-number button:hover, .create:hover, .view button:hover{
     background-color: rgb(116, 66, 252);
 }
 
@@ -445,19 +448,19 @@ form input:hover, form input:focus{
         font-size: 24px;
     }
 
-    .events > .event-1 > .teams, .events > .event-1 > .reviews{
+    .events .event-1 > .teams, .events .event-1 > .reviews{
         height: fit-content;
         padding-left: 10px;
         padding-right: 10px;
         width: fit-content;
     }
 
-    .events > .event-1 > .reviews
+    .events .event-1 > .reviews
     {
         margin-left: 5px;
     }
 
-    .view a button{
+    .view button{
         font-size: 18px;
         padding: 8px 15px;
         /* margin-top: 0; */
@@ -478,12 +481,12 @@ form input:hover, form input:focus{
 
 @media (max-width: 650px)
 {
-    .events > .event-1 > .teams, .events > .event-1 > .reviews
+    .events .event-1 > .teams, .events .event-1 > .reviews
     {
         display: block;
     }
 
-    .events > .event-1 > .reviews{
+    .events .event-1 > .reviews{
         margin-top: 10px;
         margin-left: 30px;
     }

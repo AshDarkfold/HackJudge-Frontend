@@ -87,7 +87,7 @@ submitBtn.addEventListener('click', function(e){
         // mode: 'no-cors'
     };
 
-    fetch("https://hackjudge.herokuapp.com/details", requestOptions)
+    fetch("https://hackjudge-api.herokuapp.com/details", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));

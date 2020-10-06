@@ -91,10 +91,11 @@ $(document).ready(function(){
         IsEmail(check);
     })
 
-    $("#admin-login-mail").keyup(function () {
+    $("#admin-login-mail").change(function () {
         var check = $("#admin-login-mail").val();
+        console.log(check)
         IsEmail(check);
-    })
+    });
 
     $('#username').keyup(function(){
         var check = $("#username").val();
@@ -144,6 +145,8 @@ $(document).ready(function(){
         IsUser(check);
     })
 
+    
+
     isUsername = false;
 
     function IsUser(username){
@@ -189,7 +192,7 @@ $(document).ready(function(){
             redirect: 'follow'
             };
 
-            fetch("https://hackjudge.herokuapp.com/admin/login/", requestOptions)
+            fetch("https://hackjudge-api.herokuapp.com/admin/login/", requestOptions)
             .then(response => response.json())
             .then(result => {
                 console.log(result)
@@ -239,7 +242,7 @@ $(document).ready(function(){
             redirect: 'follow'
             };
 
-            fetch("https://hackjudge.herokuapp.com/admin/signup", requestOptions)
+            fetch("https://hackjudge-api.herokuapp.com/admin/signup", requestOptions)
             .then(response => response.json())
             .then(result => {
                 console.log(result)
@@ -286,7 +289,7 @@ $(document).ready(function(){
             redirect: 'follow'
             };
 
-            fetch("https://hackjudge.herokuapp.com/admin/signup", requestOptions)
+            fetch("https://hackjudge-api.herokuapp.com/admin/signup", requestOptions)
             .then(response => response.json())
             .then(result => {
                 console.log(result)
@@ -318,12 +321,15 @@ $(document).ready(function(){
         let form = $('.admin-login-form');
         let messageBox = $('.admin-message');
         
+
         if (isemail)
         {
             var myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
 
-            var raw = JSON.stringify({email:mail.val() , password:password.val()});
+            console.log(mail.val(), password.val())
+
+            var raw = JSON.stringify({email:mail.val() , password:password.val(), isAdmin:true});
 
             var requestOptions = {
             method: 'POST',
@@ -332,7 +338,7 @@ $(document).ready(function(){
             redirect: 'follow'
             };
 
-            fetch("https://hackjudge.herokuapp.com/admin/login/", requestOptions)
+            fetch("https://hackjudge-api.herokuapp.com/admin/login/", requestOptions)
             .then(response => response.json())
             .then(result => {
                 console.log(result)
@@ -355,7 +361,10 @@ $(document).ready(function(){
             .catch(error => {
                 console.log('error', error)
                 swal("Aww snap!", "some error occurred!", "error");
-        });
+            });
+        }
+        else {
+            swal("Aww snap!", "You entered an invalid email", "error")
         }
     });
 });

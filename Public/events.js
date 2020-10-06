@@ -161,7 +161,7 @@ createBtn.addEventListener('click', function(e){
         body: raw,
       };
 
-      fetch("https://hackjudge.herokuapp.com/events", requestOptions)
+      fetch("https://hackjudge-api.herokuapp.com/events", requestOptions)
       .then(response => response.json())
       .then(result => {
           console.log(result)
@@ -169,3 +169,45 @@ createBtn.addEventListener('click', function(e){
       .catch(error => console.log('error', error));
 
 });
+
+function goToReview(str) {
+    console.log(str)
+}
+
+window.onload = function() {
+    fetch("https://hackjudge-api.herokuapp.com/events", {
+        headers: new Headers({
+            "Authorization":sessionStorage.getItem("admin-token")
+        })
+    })
+    .then(response => response.json())
+    .then(result => {
+        console.log(result)
+        var hol = document.getElementById("event-holder")
+        inner = ''
+        result.forEach(el => {
+            inner += `
+                <div class="event-1"> 
+                    <h1>${el.name}<span class="date">Date</span></h1>
+
+                    <div class="event-detail-holder">
+                        <div class="event-detail-child">
+                            <div class="teams">
+                                <p>No. of Enrolled Teams - <span class="number">100</span></p>
+                            </div>
+                
+                            <div class="reviews">
+                                <p>No. of Reviews - <span class="number">${el.rounds}</span></p>
+                            </div>
+                        </div>
+                        <div class="view">
+                            <button onClick="goToReview(${})">View <i class="fa fa-angle-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            `
+        });
+        hol.innerHTML=inner
+    })
+    .catch(error => console.log('error', error));
+}
